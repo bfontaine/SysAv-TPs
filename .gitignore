@@ -2,6 +2,8 @@
 *.tgz
 .*.sw*
 .DS_Store
+Baptiste_Fontaine_TP*
+rapport.pdf
 # C
 *.o
 .deps
