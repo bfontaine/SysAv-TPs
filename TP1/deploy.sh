@@ -7,7 +7,7 @@ TARGET=Baptiste_Fontaine_TP1
 
 rm -rf $TARGET $TARGET.tgz
 
-make -C rendu/src cleanall
+make -C rendu/src clean
 
 pushd rendu
 pandoc --template tpl.tex --latex-engine=xelatex rapport.md -o rapport.pdf

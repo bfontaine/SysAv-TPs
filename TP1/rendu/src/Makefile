@@ -4,7 +4,6 @@ CC=gcc
 CFLAGS=-std=gnu99 -Werror -Wall -Wextra -Wundef -Wpointer-arith -g
 
 RM=rm -f
-LIBTOOL=ar -q
 
 MODULES=main cpu
 SRC=$(addsuffix .c,$(MODULES))
@@ -32,8 +31,8 @@ $(EXE): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	$(RM) $(LIBTARGETS) $(EXE) $(LIBTESTS)
-	$(RM) *.o *~
+	$(RM) $(EXE)
+	$(RM) *.o *~ .deps
 
 check:
 	$(CPPCHECK) $(SRC)

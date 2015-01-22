@@ -32,8 +32,8 @@ $(EXE): main.o $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-	$(RM) $(LIBTARGETS) $(EXE) $(LIBTESTS)
-	$(RM) *.o *~
+	$(RM) $(EXE)
+	$(RM) *.o *~ .deps
 
 check:
 	$(CPPCHECK) $(SRC)
