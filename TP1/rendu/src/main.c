@@ -8,7 +8,7 @@
 
 int main(int argc, char **argv) {
 
-        unsigned long loops = 100000;
+        unsigned long loops = EX1_MIN_LOOPS;
         double expected_load = 0,
                actual_load = 0;
         struct cpu_time t1, t2;
@@ -18,7 +18,13 @@ int main(int argc, char **argv) {
                 exit(1);
         }
 
-        expected_load = strtod(argv[1], NULL); // TODO check errors
+        // we don't care about errors here
+        expected_load = atoi(argv[1])/100.0;
+
+        // ...since there's this check
+        if (expected_load < 0 || expected_load > 1) {
+                return 1;
+        }
 
         printf("Expected load: %f\n", expected_load);
 
@@ -35,7 +41,7 @@ int main(int argc, char **argv) {
 
                 printf("Load: %f, using %lu loops\n", actual_load, loops);
 
-                loops *= actual_load <= 0.001 ? 1000 : (expected_load / actual_load);
+                loops *= actual_load <= 0.01 ? EX1_MIN_LOOPS : (expected_load / actual_load);
         }
 
         return 0;
