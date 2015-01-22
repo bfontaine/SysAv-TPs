@@ -6,13 +6,13 @@ CFLAGS=-std=gnu99 -Werror -Wall -Wextra -Wundef -Wpointer-arith -g
 RM=rm -f
 LIBTOOL=ar -q
 
-MODULES=ex1
+MODULES=main cpu
 SRC=$(addsuffix .c,$(MODULES))
 OBJS=$(addsuffix .o,$(MODULES))
 
 DEPS=.deps
 
-EXE=tp
+EXE=tp1
 
 CPPCHECK_VER:=$(shell cppcheck --version 2>/dev/null)
 ifdef CPPCHECK_VER
@@ -28,8 +28,8 @@ endif
 
 all: .deps $(EXE)
 
-$(EXE): main.o $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $<
+$(EXE): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
 	$(RM) $(LIBTARGETS) $(EXE) $(LIBTESTS)
