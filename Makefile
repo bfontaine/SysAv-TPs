@@ -37,4 +37,4 @@ new_tp: ensure_tpnum_0
 
 push: ensure_tpnum_0
 	@# push TP$(TPNUM) to DidEL
-	didel assignments:submit M2T1SYSTAV $$((1+$(TPNUM))) "TP $(TPNUM)" $(TGZ)
+	didel assignments:submit M2T1SYSTAV $(TPNUM) "TP $(TPNUM)" $(TGZ)
