@@ -6,7 +6,7 @@
 #define MAX_LONG_CHAR_SIZE 32
 
 int cpu_times(struct cpu_time *cpt) {
-        FILE *statf = fopen("/proc/stat", "r");
+        FILE *statf;
         long user, nice, system, idle;
         long timeunit;
 
@@ -20,7 +20,7 @@ int cpu_times(struct cpu_time *cpt) {
                 return -1;
         }
 
-        fscanf(statf, "cpu  %lu %lu %lu %lu", &user, &nice, &system, &idle);
+        fscanf(statf, "cpu  %ld %ld %ld %ld", &user, &nice, &system, &idle);
 
         cpt->user_time = user * timeunit;
         cpt->nice_time = nice * timeunit;
