@@ -34,6 +34,7 @@ int main(int argc, char **argv) {
                 if (cpu_times(&t1) != 0) { perror("cpu_times"); return 1; }
 
                 while (i++ < loops);
+                usleep(400); // arbitrary number
 
                 if (cpu_times(&t2) != 0) { perror("cpu_times"); return 1; }
 
