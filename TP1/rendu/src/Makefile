@@ -1,11 +1,11 @@
-# Baptiste Fontaine -- TP 1
+# Baptiste Fontaine - Julien Sagot -- TP 1
 
 CC=gcc
 CFLAGS=-std=gnu99 -Werror -Wall -Wextra -Wundef -Wpointer-arith -g
 
 RM=rm -f
 
-MODULES=main cpu
+MODULES=load_cpu
 SRC=$(addsuffix .c,$(MODULES))
 OBJS=$(addsuffix .o,$(MODULES))
 
