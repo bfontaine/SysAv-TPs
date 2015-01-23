@@ -23,7 +23,7 @@ else
 CPPCHECK=\#
 endif
 
-.PHONY: all clean tests
+.PHONY: all clean check
 
 all: .deps $(EXE)
 
