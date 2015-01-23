@@ -3,7 +3,7 @@
 set -e
 set -x
 
-TARGET=Baptiste_Fontaine_TP1
+TARGET=Fontaine_Sagot_TP1
 
 rm -rf $TARGET $TARGET.tgz
 

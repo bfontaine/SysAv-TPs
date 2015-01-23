@@ -1,4 +1,4 @@
-// Baptiste Fontaine -- TP %TPNUM%
+// Baptiste Fontaine & Julien Sagot -- TP %TPNUM%
 #include <stdio.h>
 
 #include "main.h"

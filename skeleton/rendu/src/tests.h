@@ -1,3 +1,4 @@
+// Baptiste Fontaine & Julien Sagot -- TP %TPNUM%
 #ifndef _TESTS_H
 #define _TESTS_H
 

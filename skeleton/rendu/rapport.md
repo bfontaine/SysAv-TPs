@@ -1,4 +1,4 @@
-# Baptiste Fontaine -- TP %TPNUM%
+# Baptiste Fontaine et Julien Sagot -- TP %TPNUM%
 
 ## Problèmes rencontrés
 

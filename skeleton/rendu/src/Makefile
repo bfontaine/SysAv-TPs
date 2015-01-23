@@ -1,4 +1,4 @@
-# Baptiste Fontaine -- TP %TPNUM%
+# Baptiste Fontaine & Julien Sagot -- TP %TPNUM%
 
 CC=gcc
 CFLAGS=-std=gnu99 -Werror -Wall -Wextra -Wundef -Wpointer-arith -g
@@ -24,7 +24,7 @@ else
 CPPCHECK=\#
 endif
 
-.PHONY: all clean tests
+.PHONY: all clean check
 
 all: .deps $(EXE)
 
