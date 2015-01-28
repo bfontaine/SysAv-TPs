@@ -5,13 +5,13 @@ CFLAGS=-std=gnu99 -Werror -Wall -Wextra -Wundef -Wpointer-arith -g
 
 RM=rm -f
 
-MODULES=load_cpu
+MODULES=load_cpu load_ram
 SRC=$(addsuffix .c,$(MODULES))
 OBJS=$(addsuffix .o,$(MODULES))
 
 DEPS=.deps
 
-EXE=tp1
+EXES=$(MODULES)
 
 CPPCHECK_VER:=$(shell cppcheck --version 2>/dev/null)
 ifdef CPPCHECK_VER
@@ -25,10 +25,7 @@ endif
 
 .PHONY: all clean check
 
-all: .deps $(EXE)
-
-$(EXE): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
+all: .deps $(EXES)
 
 clean:
 	$(RM) $(EXE)
@@ -42,5 +39,8 @@ $(DEPS):
 
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $<
+
+%: %.o
+	$(CC) $(CFLAGS) -o $@ $^
 
 -include .deps
