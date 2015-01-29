@@ -2,6 +2,7 @@
 *.tgz
 .*.sw*
 .DS_Store
+Fontaine_Sagot_TP*
 Baptiste_Fontaine_TP*
 rapport.pdf
 # C
