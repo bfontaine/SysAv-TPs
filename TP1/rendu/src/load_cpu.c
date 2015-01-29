@@ -3,50 +3,67 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 static int VERBOSE = 1 ;
 
 void load_cpu (float load)
 {
-	float
-		NUMBER_OF_LOOPS = 100000000,
-		SC_CLK_TCK = sysconf (_SC_CLK_TCK),
-		CPU_USAGE_RATE ;
+        float
+                loops_count = 100000000,
+                SC_CLK_TCK = sysconf (_SC_CLK_TCK),
+                cpu_usage_rate ;
 
-	struct tms t0, t1 ;
-	clock_t c0, c1 ;
+        struct tms t0, t1 ;
+        clock_t c0, c1 ;
 
-	while (1)
-	{
-		c0 = times (&t0) ;
+        while (1)
+        {
+                c0 = times (&t0) ;
 
-		for (int i = 0; i < NUMBER_OF_LOOPS; i++) ;
-		sleep (1) ;
+                for (int i = 0; i < loops_count; i++) ;
+                sleep (1) ;
 
-		c1 = times (&t1) ;
+                c1 = times (&t1) ;
 
-		if (c1 - c0 == 0) continue ; // Avoid division by zero.
+                if (c1 == c0) continue ; // Avoid division by zero.
 
-		CPU_USAGE_RATE =
-			SC_CLK_TCK * (t1.tms_utime - t0.tms_utime)
-			/ (c1 - c0) ;
+                cpu_usage_rate =
+                        SC_CLK_TCK * (t1.tms_utime - t0.tms_utime)
+                        / (c1 - c0) ;
 
-		NUMBER_OF_LOOPS *= (load / CPU_USAGE_RATE) ;
+                loops_count *= (load / cpu_usage_rate) ;
 
-		if (VERBOSE)
-		{
-			printf("CPU usage: %f%% with %d loops.\n",
-			       CPU_USAGE_RATE,
-			       (int) NUMBER_OF_LOOPS) ;
-		}
-	}
+                if (VERBOSE)
+                {
+                        printf("CPU usage: %f%% with %d loops.\n",
+                               cpu_usage_rate,
+                               (int) loops_count) ;
+                }
+        }
+}
+
+int print_usage (char **argv)
+{
+        printf("Usage:\n\t%s [-s] <percentage>\n", argv[0]);
+        return 1 ;
 }
 
 
 int main (int argc, char ** argv)
 {
-	if (argc > 1)
-		load_cpu (atoi(argv[1])) ;
+        int args_start = 1;
 
-	return 0 ;
+        if (argc == 1) return print_usage(argv);
+
+        if (strcmp("-s", argv[1]) == 0) {
+                args_start++;
+                VERBOSE = 0;
+        }
+
+        if (argc <= args_start) return print_usage(argv);
+
+        load_cpu (atoi(argv[args_start])) ;
+
+        return 0 ;
 }
