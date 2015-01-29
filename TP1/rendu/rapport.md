@@ -7,6 +7,9 @@ répétée en fonction de la charge, récupérée avec `times`.
 
 ## RAM
 
+Le programme appelle `mmap` sur la taille d’une page jusqu’à ne plus pouvoir.
+Il essaye aussi de verrouiller la mémoire.
+
 ## Documentation
 
 Chaque exécutable (`load_cpu` et `load_ram`) est fourni avec une manpage
