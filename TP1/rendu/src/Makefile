@@ -29,8 +29,9 @@ endif
 all: .deps $(EXES)
 
 clean:
-	$(RM) $(EXE)
+	$(RM) $(EXES)
 	$(RM) *.o *~ .deps
+	$(RM) -r *.dSYM
 
 check:
 	$(CPPCHECK) $(SRC)
