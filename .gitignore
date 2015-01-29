@@ -6,4 +6,6 @@ Baptiste_Fontaine_TP*
 rapport.pdf
 # C
 *.o
+*.dSYM
 .deps
+*.1

@@ -6,6 +6,7 @@ CFLAGS=-std=gnu99 -Werror -Wall -Wextra -Wundef -Wpointer-arith -g
 RM=rm -f
 
 MODULES=load_cpu load_ram
+MANS=$(addsuffix .1,$(MODULES))
 SRC=$(addsuffix .c,$(MODULES))
 OBJS=$(addsuffix .o,$(MODULES))
 
@@ -23,7 +24,7 @@ else
 CPPCHECK=\#
 endif
 
-.PHONY: all clean check
+.PHONY: all clean check man
 
 all: .deps $(EXES)
 
@@ -34,11 +35,17 @@ clean:
 check:
 	$(CPPCHECK) $(SRC)
 
+man: $(MANS)
+
 $(DEPS):
 	gcc -M $(SRC) >| $@
 
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $<
+
+%.1: %.md
+	@# gem install ronn
+	ronn -rw --manual "TP1 Manual" --pipe $< >| $@
 
 %: %.o
 	$(CC) $(CFLAGS) -o $@ $^

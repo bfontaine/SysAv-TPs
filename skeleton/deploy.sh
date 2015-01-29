@@ -1,7 +1,4 @@
-#! /bin/bash
-
-set -e
-set -x
+#! /bin/bash -ex
 
 TARGET=Fontaine_Sagot_TP%TPNUM%
 
@@ -15,7 +12,3 @@ popd
 
 cp -r rendu $TARGET
 tar czvf ${TARGET}.tgz --exclude '*.md' --exclude '*.tex' $TARGET
-
-scp ${TARGET}.tgz lu:
-
-set +x
