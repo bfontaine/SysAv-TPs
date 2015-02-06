@@ -1,0 +1,17 @@
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$]{$documentclass$}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[unicode=true]{hyperref}
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\lhead{}
+\rhead{\itshape{\nouppercase{Baptiste Fontaine et Julien Sagot – TP 3}}}
+$if(lang)$
+\usepackage[$lang$]{babel}
+$endif$
+\begin{document}
+$body$
+\end{document}
