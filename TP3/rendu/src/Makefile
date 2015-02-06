@@ -4,15 +4,12 @@ CC=gcc
 CFLAGS=-std=gnu99 -Werror -Wall -Wextra -Wundef -Wpointer-arith -g
 
 RM=rm -f
-LIBTOOL=ar -q
 
-MODULES=ex1
+MODULES=collecter
 SRC=$(addsuffix .c,$(MODULES))
 OBJS=$(addsuffix .o,$(MODULES))
 
 DEPS=.deps
-
-EXE=tp
 
 CPPCHECK_VER:=$(shell cppcheck --version 2>/dev/null)
 ifdef CPPCHECK_VER
@@ -26,9 +23,9 @@ endif
 
 .PHONY: all clean check
 
-all: .deps $(EXE)
+all: .deps $(MODULES)
 
-$(EXE): main.o $(OBJS)
+$(EXE): cpu.o $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:

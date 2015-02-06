@@ -1,8 +1,6 @@
 # Baptiste Fontaine et Julien Sagot -- TP 3
 
-## Problèmes rencontrés
-
 ## Temps
 
-Estimé :
+Estimé : 20 heures
 Passé :
