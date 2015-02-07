@@ -29,7 +29,7 @@ $(EXE): cpu.o $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-	$(RM) $(EXE)
+	$(RM) $(MODULES)
 	$(RM) *.o *~ .deps
 
 check:
